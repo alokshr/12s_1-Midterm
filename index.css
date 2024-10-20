@@ -1,3 +1,7 @@
+a {
+    color: inherit;
+}
+
 .carousel,
 .carousel-item .card,
 .carousel-item .row {
