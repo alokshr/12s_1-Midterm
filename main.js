@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", loadHomeContent)
+
 /** Adds a card filled with given JSON data to a given carousel
  * 
  * JSON data must have:
@@ -14,17 +16,19 @@ function addCardToCarousel(data, carousel) {
     let card = document.createElement("div");
 
     card.innerHTML = `
-    <div class="card carousel-item">
-        <div class="row g-0">
-            <div class="col-md-4">
-            <img src="${data.image}" class="img-fluid rounded-start product-image" alt="Image of ${data.title}">
-            </div>
-            <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">${data.title}</h5>
-                <p class="card-text">${data.description}</p>
-                <p class="card-text"><small class="text-muted">$${data.price}</small></p>
-            </div>
+    <div class="carousel-item">
+        <div class="card p-3">
+            <div class="row g-0">
+                <div class="col col-4">
+                    <img src="${data.image}" class="img-fluid rounded-2" alt="Image of ${data.title}">
+                </div>
+                <div class="col col-8">
+                    <div class="card-body">
+                        <h3 class="card-title">${data.title}</h5>
+                        <p class="card-text">${data.description}</p>
+                        <p class="card-text"><small class="text-muted">$${data.price}</small></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>`;
@@ -55,14 +59,22 @@ function addCardToCarousel(data, carousel) {
     carousel.dataset.slides = numSlides+1;
 }
 
-let carousel1 = document.getElementById("carouselPopular");
-addCardToCarousel("", carousel1);
-addCardToCarousel("", carousel1);
-addCardToCarousel("", carousel1);
-addCardToCarousel("", carousel1);
+function loadHomeContent() {
+    fetch("products.json")
+    .then(response => response.json())
+    .then(data => {
+        let carouselPopular = document.getElementById("carouselPopular");
+        
+        for (let i = 0; i < data.length; i++) {
+            addCardToCarousel(data[i], carouselPopular);
+        }
+    });        
 
-let carousel2 = document.getElementById("carouselTopSelling");
-addCardToCarousel("", carousel2);
-addCardToCarousel("", carousel2);
-addCardToCarousel("", carousel2);
-addCardToCarousel("", carousel2);
+    
+    
+    let carouselTopSelling = document.getElementById("carouselTopSelling");
+    addCardToCarousel("", carouselTopSelling);
+    addCardToCarousel("", carouselTopSelling);
+    addCardToCarousel("", carouselTopSelling);
+    addCardToCarousel("", carouselTopSelling);
+}
