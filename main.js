@@ -1,4 +1,11 @@
-// Adds a card filled with given JSON data to a given carousel
+/** Adds a card filled with given JSON data to a given carousel
+ * 
+ * JSON data must have:
+ * - title
+ * - description
+ * - image
+ * - price
+*/
 function addCardToCarousel(data, carousel) {
     let numSlides = parseInt(carousel.dataset.slides);
 
@@ -22,7 +29,6 @@ function addCardToCarousel(data, carousel) {
         </div>
     </div>`;
     card = card.firstElementChild;
-    console.log(card);
 
     // Creating the indicator for card
     let indicators = carousel.getElementsByClassName("carousel-indicators")[0];
@@ -31,7 +37,7 @@ function addCardToCarousel(data, carousel) {
     indicator.innerHTML = `
     <button
         type="button"
-        data-bs-target="#carouselExampleIndicators"
+        data-bs-target="#${carousel.id}"
         data-bs-slide-to="${numSlides}"
         aria-label="Slide ${numSlides+1}"
     ></button>`;
@@ -49,8 +55,14 @@ function addCardToCarousel(data, carousel) {
     carousel.dataset.slides = numSlides+1;
 }
 
-let carousel = document.getElementById("carouselExample");
-addCardToCarousel("", carousel);
-addCardToCarousel("", carousel);
-addCardToCarousel("", carousel);
-addCardToCarousel("", carousel);
+let carousel1 = document.getElementById("carouselPopular");
+addCardToCarousel("", carousel1);
+addCardToCarousel("", carousel1);
+addCardToCarousel("", carousel1);
+addCardToCarousel("", carousel1);
+
+let carousel2 = document.getElementById("carouselTopSelling");
+addCardToCarousel("", carousel2);
+addCardToCarousel("", carousel2);
+addCardToCarousel("", carousel2);
+addCardToCarousel("", carousel2);
