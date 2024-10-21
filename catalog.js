@@ -18,8 +18,9 @@ function addCardToAlbum(data) {
     card.innerHTML = `
     <div class="col">
             <div class="card shadow-sm">
-              <img src="${data.image.url}" alt="Image of ${data.name}, ${data.image.author}\nSource: ${data.image.source}">
+              <img src="${data.image.url}" alt="Image of ${data.name}, ${data.image.author}\nSource: ${data.image.source}" class="mt-3 img-fluid img-thumbnail border-light border-3 bg-light-subtle">
               <div class="card-body">
+                <h3 class="card-title">${data.name}</h3>
                 <p class="card-text">${data.description}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
