@@ -31,7 +31,7 @@ function displayProduct(data) {
         </div>
         <div class="row g-0">
             <div class="col col-md-4">
-                <button href="${data.link}" class="btn btn-primary w-100" id="purchase-btn">Buy here!</button>
+                <a href="${data.link}" class="btn btn-primary w-100" id="purchase-btn">Buy here!</a>
             </div>
         </div>
     </div>`;
@@ -44,7 +44,7 @@ function displayProduct(data) {
 
     if (!data.link) {
         buyButton.innerHTML = "Not available for purchase yet";
-        buyButton.disabled = true;
+        buyButton.classList.add("disabled");
     }
 
 }
