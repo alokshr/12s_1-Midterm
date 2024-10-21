@@ -19,7 +19,7 @@ function displayProduct(data) {
     <div class="card p-3 mt-5" data-bs-theme="dark">
         <div class="row g-0">
             <div class="col col-md-4">
-                <img src="${data.image}" class="img-fluid rounded-2" alt="Image of ${data.name}">
+                <img class="ps-5 link-light link-opacity-50-hover link-underline-opacity-50-hover"><img src="${data.image.url}" class="img-fluid rounded-2 img-thumbnail border-light border-3 bg-light-subtle" alt="Image of ${data.name}, ${data.image.author}\nSource: ${data.image.source}">
             </div>
             <div class="col col-md-8">
                 <div class="card-body">
@@ -29,7 +29,7 @@ function displayProduct(data) {
                 </div>
             </div>
         </div>
-        <div class="row g-0">
+        <div class="row mt-2">
             <div class="col col-md-4">
                 <a href="${data.link}" class="btn btn-primary w-100" id="purchase-btn">Buy here!</a>
             </div>

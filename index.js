@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", loadHomeContent)
  * - name
  * - description
  * - image
+ *    - url
+ *    - author
+ *    - source
  * - price
 */
 function addCardToCarousel(data, carousel) {
@@ -20,12 +23,12 @@ function addCardToCarousel(data, carousel) {
     <div class="carousel-item">
         <div class="card p-3">
             <div class="row g-0">
-                <div class="col col-4">
-                    <a href="./product.html?id=${data.id} class=""><img src="${data.image}" class="img-fluid rounded-2" alt="Image of ${data.name}"></a>
+                <div class="col-md-4 ps-5 d-flex justify-content-center">
+                    <a href="./product.html?id=${data.id}" class="align-content-center link-light link-opacity-50-hover link-underline-opacity-50-hover"><img src="${data.image.url}" class="img-fluid rounded-2 img-thumbnail border-light border-3 bg-light-subtle" alt="Image of ${data.name}, ${data.image.author}\nSource: ${data.image.source}"></a>
                 </div>
-                <div class="col col-8">
+                <div class="col-md-8 pe-5">
                     <div class="card-body">
-                        <h3 class="card-title"><a href="./product.html?id=${data.id}">${data.name}</a></h5>
+                        <h3 class="card-title"><a href="./product.html?id=${data.id}" class="link-light link-opacity-50-hover link-underline-opacity-50-hover">${data.name}</a></h5>
                         <p class="card-text">${data.description}</p>
                         <p class="card-text"><small class="text-muted">$${data.price}</small></p>
                     </div>
