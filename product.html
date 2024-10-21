@@ -10,6 +10,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="product.css" />
+    <link rel="stylesheet" href="index.css" />
     <title>TechWreck | The Best of the Worst Tech Products</title>
   </head>
   <body class="bg-dark-subtle">
@@ -43,7 +44,45 @@
       </nav>
     </header>
 
+    <!-- Product Card -->
     <div class="container" id="product-container"></div>
+
+    <!-- Recommended Products Carousel -->
+    <div class="container mt-5 mb-5">
+      <h1 class="text-center">Recommended Products</h1>
+      <div
+        id="carouselRecommended"
+        class="carousel slide rounded bg-dark"
+        data-slides="0"
+        data-bs-theme="dark"
+      >
+        <!-- Carousels items go in here -->
+        <div class="carousel-inner"></div>
+
+        <!-- Indicators at the bottom of carousels go in here -->
+        <div class="carousel-indicators"></div>
+
+        <!-- Carousel Next and Prev Buttons, make sure to set data-bs-target to the carousel's id -->
+        <button
+          class="carousel-control-prev ms-3"
+          type="button"
+          data-bs-target="#carouselRecommended"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next me-3"
+          type="button"
+          data-bs-target="#carouselRecommended"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="text-body-secondary py-5">

@@ -1,7 +1,7 @@
-document.addEventListener("DOMContentLoaded", loadHomeContent)
+document.addEventListener("DOMContentLoaded", loadHomeContent);
 
 /** Adds a card filled with given JSON data to a given carousel
- * 
+ *
  * JSON data must have:
  * - id
  * - name
@@ -11,15 +11,15 @@ document.addEventListener("DOMContentLoaded", loadHomeContent)
  *    - author
  *    - source
  * - price
-*/
+ */
 function addCardToCarousel(data, carousel) {
-    let numSlides = parseInt(carousel.dataset.slides);
+  let numSlides = parseInt(carousel.dataset.slides);
 
-    // Creating card to add to carousel
-    let items = carousel.getElementsByClassName("carousel-inner")[0];
-    let card = document.createElement("div");
+  // Creating card to add to carousel
+  let items = carousel.getElementsByClassName("carousel-inner")[0];
+  let card = document.createElement("div");
 
-    card.innerHTML = `
+  card.innerHTML = `
     <div class="carousel-item">
         <div class="card p-3">
             <div class="row g-0">
@@ -36,48 +36,48 @@ function addCardToCarousel(data, carousel) {
             </div>
         </div>
     </div>`;
-    card = card.firstElementChild;
+  card = card.firstElementChild;
 
-    // Creating the indicator for card
-    let indicators = carousel.getElementsByClassName("carousel-indicators")[0];
-    let indicator = document.createElement("div");
+  // Creating the indicator for card
+  let indicators = carousel.getElementsByClassName("carousel-indicators")[0];
+  let indicator = document.createElement("div");
 
-    indicator.innerHTML = `
+  indicator.innerHTML = `
     <button
         type="button"
         data-bs-target="#${carousel.id}"
         data-bs-slide-to="${numSlides}"
-        aria-label="Slide ${numSlides+1}"
+        aria-label="Slide ${numSlides + 1}"
+        class="bg-light"
     ></button>`;
-    indicator = indicator.firstElementChild;
+  indicator = indicator.firstElementChild;
 
-    // Making sure the carousel has a default slide to display
-    if (numSlides == 0) {
-        card.classList.add("active");
-        indicator.classList.add("active")
-        indicator.ariaCurrent = "true";
-    }
+  // Making sure the carousel has a default slide to display
+  if (numSlides == 0) {
+    card.classList.add("active");
+    indicator.classList.add("active");
+    indicator.ariaCurrent = "true";
+  }
 
-    items.appendChild(card);
-    indicators.appendChild(indicator);
-    carousel.dataset.slides = numSlides+1;
+  items.appendChild(card);
+  indicators.appendChild(indicator);
+  carousel.dataset.slides = numSlides + 1;
 }
 
 function loadHomeContent() {
-    fetch("./data.json")
-    .then(response => response.json())
-    .then(data => {
-        let carouselPopular = document.getElementById("carouselPopular");
-        
-        for (let i = 0; i < data.length; i++) {
-            addCardToCarousel(data[i], carouselPopular);
+  fetch("./data.json")
+    .then((response) => response.json())
+    .then((data) => {
+      let carouselPopular = document.getElementById("carouselPopular");
+      let carouselTopSelling = document.getElementById("carouselTopSelling");
+
+      for (let i = 0; i < data.length; i++) {
+        if (i < data.length / 2) {
+          addCardToCarousel(data[i], carouselPopular);
+        } else {
+          addCardToCarousel(data[i], carouselTopSelling);
         }
+      }
     })
-    .catch(error => console.log(error));
-    
-    let carouselTopSelling = document.getElementById("carouselTopSelling");
-    addCardToCarousel("", carouselTopSelling);
-    addCardToCarousel("", carouselTopSelling);
-    addCardToCarousel("", carouselTopSelling);
-    addCardToCarousel("", carouselTopSelling);
+    .catch((error) => console.log(error));
 }

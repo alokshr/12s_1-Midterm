@@ -1,9 +1,3 @@
-.card,
-.row {
-  height: fit-content;
-  max-height: fit-content;
-}
-
 .card .col {
   align-content: center;
   justify-content: center;
