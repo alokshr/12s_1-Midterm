@@ -5,7 +5,8 @@ a {
 
 .card,
 .row {
-  height: 20rem;
+  height: fit-content;
+  max-height: fit-content;
 }
 
 .col {
