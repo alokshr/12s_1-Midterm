@@ -69,7 +69,8 @@ function loadHomeContent() {
         for (let i = 0; i < data.length; i++) {
             addCardToCarousel(data[i], carouselPopular);
         }
-    });
+    })
+    .catch(error => console.log(error));
     
     let carouselTopSelling = document.getElementById("carouselTopSelling");
     addCardToCarousel("", carouselTopSelling);
