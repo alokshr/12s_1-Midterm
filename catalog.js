@@ -18,7 +18,7 @@ function addCardToAlbum(data) {
     card.innerHTML = `
     <div class="col">
             <div class="card shadow-sm">
-              <img src="./images/madhiOG.png" alt="The OG">
+              <img src="${data.image.url}" alt="Image of ${data.name}, ${data.image.author}\nSource: ${data.image.source}">
               <div class="card-body">
                 <p class="card-text">${data.description}</p>
                 <div class="d-flex justify-content-between align-items-center">
