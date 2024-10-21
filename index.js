@@ -48,6 +48,7 @@ function addCardToCarousel(data, carousel) {
         data-bs-target="#${carousel.id}"
         data-bs-slide-to="${numSlides}"
         aria-label="Slide ${numSlides + 1}"
+        class="bg-light"
     ></button>`;
   indicator = indicator.firstElementChild;
 
