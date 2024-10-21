@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", loadHomeContent)
 /** Adds a card filled with given JSON data to a given carousel
  * 
  * JSON data must have:
- * - title
+ * - id
+ * - name
  * - description
  * - image
  * - price
@@ -20,11 +21,11 @@ function addCardToCarousel(data, carousel) {
         <div class="card p-3">
             <div class="row g-0">
                 <div class="col col-4">
-                    <img src="${data.image}" class="img-fluid rounded-2" alt="Image of ${data.title}">
+                    <a href="./product.html?id=${data.id} class=""><img src="${data.image}" class="img-fluid rounded-2" alt="Image of ${data.name}"></a>
                 </div>
                 <div class="col col-8">
                     <div class="card-body">
-                        <h3 class="card-title">${data.title}</h5>
+                        <h3 class="card-title"><a href="./product.html?id=${data.id}">${data.name}</a></h5>
                         <p class="card-text">${data.description}</p>
                         <p class="card-text"><small class="text-muted">$${data.price}</small></p>
                     </div>
@@ -60,7 +61,7 @@ function addCardToCarousel(data, carousel) {
 }
 
 function loadHomeContent() {
-    fetch("products.json")
+    fetch("./data.json")
     .then(response => response.json())
     .then(data => {
         let carouselPopular = document.getElementById("carouselPopular");
@@ -68,9 +69,8 @@ function loadHomeContent() {
         for (let i = 0; i < data.length; i++) {
             addCardToCarousel(data[i], carouselPopular);
         }
-    });        
-
-    
+    })
+    .catch(error => console.log(error));
     
     let carouselTopSelling = document.getElementById("carouselTopSelling");
     addCardToCarousel("", carouselTopSelling);
